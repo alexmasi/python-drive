@@ -5,6 +5,7 @@ import datetime
 import os
 from quickstart import get_credentials
 
+
 class Drive:
     def __init__(self):
         credentials = get_credentials()
@@ -31,9 +32,9 @@ class Drive:
             New folder ID.
         """
         folder_metadata = {
-            'name' : folder_name,
-            'mimeType' : 'application/vnd.google-apps.folder',
-            'parents' : [parent_id]
+            'name': folder_name,
+            'mimeType': 'application/vnd.google-apps.folder',
+            'parents': [parent_id]
         }
         folder = self.service.files().create(body=folder_metadata,
                                              fields='id').execute()
@@ -48,15 +49,15 @@ class Drive:
             parent_id: Parent folder ID if not in root.
         """
         file_metadata = {
-            'name' : file_name,
-            'mimeType' : mimetypes.guess_type(file_path),
-            'parents' : [parent_id]
+            'name': file_name,
+            'mimeType': mimetypes.guess_type(file_path),
+            'parents': [parent_id]
         }
-        media = apiclient.http.MediaFileUpload \
-                (file_path, mimetype=file_metadata['mimeType'],
-                 chunksize=4*10**7, resumable=True)
-        request = self.service.files().create \
-                  (body=file_metadata, media_body=media, fields='id')
+        media = apiclient.http.MediaFileUpload\
+            (file_path, mimetype=file_metadata['mimeType'],
+             chunksize=4*10**7, resumable=True)
+        request = self.service.files().create\
+            (body=file_metadata, media_body=media, fields='id')
         response = None
         while response is None:
             status, response = request.next_chunk()

@@ -7,7 +7,7 @@ def main():
     folder = my_drive.query("name = 'Drone Club Videos'")
     folder_id = folder['files'][0]['id']
     new_folder_id = my_drive.create_folder(str(datetime.date.today()),
-                                               folder_id)
+                                           folder_id)
     for f in os.scandir(source_drive_path):
         my_drive.upload_file(f.name, f.path, new_folder_id)
 

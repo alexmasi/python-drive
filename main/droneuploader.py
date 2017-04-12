@@ -1,3 +1,8 @@
+from drive import Drive
+import datetime
+import os
+
+
 def main():
     """Uploads files in a directory to Google Drive.
 
@@ -10,6 +15,7 @@ def main():
                                            folder_id)
     for f in os.scandir(source_drive_path):
         my_drive.upload_file(f.name, f.path, new_folder_id)
+
 
 if __name__ == '__main__':
     main()

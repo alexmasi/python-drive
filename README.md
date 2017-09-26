@@ -20,7 +20,7 @@ $ pip install httplib2
 
 ### Authentication
 
-Create a file named *client_secret.json* in the same directory as *main*. This file can be created by visiting the [Google API Console](console.developers.google.com) and selecting `Create Credentials`.
+Create a file named *client_secret.json* in the same directory as *main*. This file can be created by visiting the [Google API Console](https://console.developers.google.com) and selecting `Create Credentials`.
 
 
 ### Usage

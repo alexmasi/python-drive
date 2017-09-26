@@ -53,11 +53,11 @@ class Drive:
             'mimeType': mimetypes.guess_type(file_path),
             'parents': [parent_id]
         }
-        media = apiclient.http.MediaFileUpload\
-            (file_path, mimetype=file_metadata['mimeType'],
-             chunksize=4*10**7, resumable=True)
-        request = self.service.files().create\
-            (body=file_metadata, media_body=media, fields='id')
+        media = apiclient.http.MediaFileUpload(
+            file_path, mimetype=file_metadata['mimeType'],
+            chunksize=4 * 10**7, resumable=True)
+        request = self.service.files().create(
+            body=file_metadata, media_body=media, fields='id')
         response = None
         while response is None:
             status, response = request.next_chunk()
